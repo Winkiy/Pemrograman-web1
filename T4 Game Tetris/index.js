@@ -19,7 +19,7 @@ window.onload = () => {
             if (color !== null) {
                 this.color = color;
                 this.img = new Image();
-                this.img.src = `resources/${Tetromino.COLORS[color]}.jpg`
+                this.img.src = `Resources/${Tetromino.COLORS[color]}.jpg`
             }
         }
 
