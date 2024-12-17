@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", { packages: ["corechart", "table"] });
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        // Data untuk tabel horizontal
+        var tableData = google.visualization.arrayToDataTable([
+          ["Tahun", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"],
+          ["2022", 4017, 6135, 7091, 5841, 5036, 4547, 3467, 3970, 6313, 3595, 9207, 5945],
+          ["2023", 2416, 4136, 7935, 8004, 9505, 5026, 6108, 6343, 9404, 9280, 9287, 8689],
+        ]);
+
+        // Tampilkan Tabel Data Horizontal
+        var table = new google.visualization.Table(document.getElementById("table_div"));
+        table.draw(tableData, {
+          showRowNumber: false,
+          width: "100%",
+          height: "15%",
+        });
+
+        // Data untuk grafik batang
+        var chartData = google.visualization.arrayToDataTable([
+          ["Bulan", "2022", "2023"],
+          ["Januari", 4017, 2416],
+          ["Februari", 6135, 4136],
+          ["Maret", 7091, 7935],
+          ["April", 5841, 8004],
+          ["Mei", 5036, 9505],
+          ["Juni", 4547, 5026],
+          ["Juli", 3467, 6108],
+          ["Agustus", 3970, 6343],
+          ["September", 6313, 9404],
+          ["Oktober", 3595, 9280],
+          ["November", 9207, 9287],
+          ["Desember", 5945, 8689],
+        ]);
+
+        // Konfigurasi Chart
+        var options = {
+          title: "Laporan Penjualan Tahun 2022 dan 2023",
+          titlePosition: "center", // Judul di tengah
+          hAxis: {
+            title: "Bulan",
+            slantedText: true, // Membuat teks miring
+            slantedTextAngle: 45, // Sudut kemiringan
+            textStyle: { fontSize: 9 }, // Ukuran font label sumbu horizontal
+          },
+          vAxis: {
+            title: "Jumlah Penjualan",
+            textStyle: { fontSize: 10 }, // Ukuran font label sumbu vertikal
+          },
+          colors: ["#4285F4", "#DB4437"],
+          legend: { position: "top", alignment: "center" }, // Posisi legenda
+          chartArea: { width: "70%", height: "70%" },
+        };
+
+        // Tampilkan Grafik Bar
+        var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+        chart.draw(chartData, options);
+      }
+    </script>
+    <style>
+      /* CSS untuk mengecilkan tabel */
+      #table_div table {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 12px;
+        border-collapse: collapse;
+      }
+      #table_div th,
+      #table_div td {
+        border: 1px solid #ddd;
+        text-align: center;
+        padding: 8px;
+      }
+      #table_div th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 style="text-align: center">Laporan Penjualan</h2>
+    <!-- Tabel Penjualan Horizontal -->
+    <div id="table_div" style="padding-bottom: 20px"></div>
+    <!-- Grafik Penjualan -->
+    <div id="chart_div" style="width: 800px; height: 400px; margin: 0 auto"></div>
+  </body>
+</html>
